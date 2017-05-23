@@ -60,13 +60,6 @@ allprojects {
 
     }
 
-    jar {
-
-        baseName = 'spring-boot-admin'
-        version = '1.0-SNAPSHOT'
-    }
-
-
 }
 
 configure(rootProject) {

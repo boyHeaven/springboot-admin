@@ -1,0 +1,6 @@
+rootProject.name = 'springboot-admin'
+include 'springboot-web'
+include 'springboot-service'
+include 'springboot-test'
+include 'springboot-dao'
+

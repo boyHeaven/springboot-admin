@@ -1,0 +1,8 @@
+description = 'The dao module.'
+
+dependencies {
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    testCompile project(':springboot-test')
+}

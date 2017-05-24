@@ -1,4 +1,4 @@
-package cn.com.springboot.banner;
+package cn.com.yxb.springboot.banner;
 
 import org.springframework.boot.Banner;
 import org.springframework.core.env.Environment;

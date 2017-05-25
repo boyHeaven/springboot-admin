@@ -2,6 +2,7 @@ package cn.com.yxb.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -9,7 +10,10 @@ import org.springframework.context.annotation.ComponentScan;
  *
  * @author bin
  */
-@SpringBootApplication
+// 该配置默认启动application.properties文件的spring.datasource.*属性并且自动配置但数据源
+//@SpringBootApplication
+// 该配置启动自动配置的多数据源
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 @ComponentScan("cn.com.yxb.springboot")
 public class MyApplication {
 

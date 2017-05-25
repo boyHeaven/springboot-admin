@@ -1,4 +1,4 @@
-package cn.com.yxb.springboot.user;
+package cn.com.yxb.springboot.mapper1;
 
 import cn.com.yxb.springboot.bean.UserBean;
 import org.apache.ibatis.annotations.Mapper;

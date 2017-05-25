@@ -1,9 +1,10 @@
 package cn.com.yxb.springboot.user.impl;
 
 import cn.com.yxb.springboot.bean.UserBean;
-import cn.com.yxb.springboot.user.UserDao;
+import cn.com.yxb.springboot.mapper1.UserDao;
 import cn.com.yxb.springboot.user.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -13,6 +14,7 @@ import javax.annotation.Resource;
  * @author bin
  */
 @Service("loginService")
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Resource

@@ -107,10 +107,14 @@ public class HttpUtil {
      */
     public static void main(String[] args) {
 
-        getCityNameByLocation();
-        System.out.println("++++++++++++++++++++通过经纬度获取城市名完成++++++++++++++");
+//        getCityNameByLocation();
+//        System.out.println("++++++++++++++++++++通过经纬度获取城市名完成++++++++++++++");
 //        getWeather();
-        System.out.println("-----------获取天气信息完成--------------");
+//        System.out.println("-----------获取天气信息完成--------------");
+
+        String cron = "0 0/3 * * * ?";
+        String reg = "/^((\\*)|(\\d+((-\\d+)|(,\\d+)+))\\s+){5}/";
+        System.out.println(cron.matches(reg));
     }
 
     /**
@@ -160,7 +164,7 @@ public class HttpUtil {
         getMethod.setParams(httpMethodParams);
 
         NameValuePair[] data = new NameValuePair[]{
-                new NameValuePair("city", "北京")
+                new NameValuePair("city", "北京市")
         };
 
         getMethod.setRequestHeader("Accept-Encoding", "gzip, deflate");

@@ -36,7 +36,6 @@ public class UserController {
 
         System.out.println("++++++++++++++name: " + name);
         System.out.println("++++++++++++++password: " + password);
-
         try {
             boolean flag = userService.userLogin(name, password);
             if (flag) {
@@ -45,7 +44,6 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return "对不起登录失败";
 
     }

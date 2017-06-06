@@ -45,7 +45,8 @@ public class HttpUtil {
      * 执行方法.
      *
      * @param method the method
-     * @return string
+     * @param isGzip the is gzip
+     * @return string string
      */
     public static String doHttpRequest(HttpMethod method, boolean isGzip) {
 
@@ -98,12 +99,51 @@ public class HttpUtil {
 
     }
 
+
     /**
      * The entry point of application.
      *
      * @param args the input arguments
      */
     public static void main(String[] args) {
+
+        getCityNameByLocation();
+        System.out.println("++++++++++++++++++++通过经纬度获取城市名完成++++++++++++++");
+//        getWeather();
+        System.out.println("-----------获取天气信息完成--------------");
+    }
+
+    /**
+     * Gets city name by location.
+     */
+    public static void getCityNameByLocation() {
+        String url = "http://gc.ditu.aliyun.com/regeocoding";
+        GetMethod getMethod = new GetMethod(url);
+        HttpMethodParams httpMethodParams = new HttpMethodParams();
+        httpMethodParams.setContentCharset("UTF-8");
+//        httpMethodParams.setParameter();
+        getMethod.setParams(httpMethodParams);
+
+        NameValuePair[] data = new NameValuePair[]{
+                new NameValuePair("l", "39.945462,119.604368"),
+                new NameValuePair("type", "010")
+        };
+
+        getMethod.setQueryString(data);
+
+        int i = 0;
+        while (i < 1000) {
+            String str = doHttpRequest(getMethod, false);
+            System.out.println("++++++返回信息::::::i===" + i + "------" + str);
+            i++;
+        }
+    }
+
+
+    /**
+     * The entry point of application.
+     */
+    public static void getWeather() {
 
         // 万年历mini Json
         String url = "http://wthrcdn.etouch.cn/weather_mini";
@@ -127,7 +167,7 @@ public class HttpUtil {
         getMethod.setQueryString(data);
 
         int i = 0;
-        while (i < 10) {
+        while (i < 1000) {
             String str = doHttpRequest(getMethod, true);
             System.out.println("++++++返回信息::::::+++++i===" + i + "------" + str);
             i++;

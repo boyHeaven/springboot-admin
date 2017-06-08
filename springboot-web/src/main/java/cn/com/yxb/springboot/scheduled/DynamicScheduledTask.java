@@ -1,6 +1,5 @@
-package cn.com.yxb.springboot.task;
+package cn.com.yxb.springboot.scheduled;
 
-import cn.com.yxb.springboot.bean.UserBean;
 import cn.com.yxb.springboot.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.Trigger;
@@ -26,7 +25,7 @@ public class DynamicScheduledTask implements SchedulingConfigurer {
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-    private static final String DEFAULT_CRON = "0 0/1 * * * ?";
+    private static String DEFAULT_CRON = "0 0/1 * * * ?";
     private String cron = DEFAULT_CRON;
 
     @Override
@@ -35,16 +34,13 @@ public class DynamicScheduledTask implements SchedulingConfigurer {
             @Override
             public void run() {
                 if (!cron.equals(DEFAULT_CRON)) {
-                    UserBean userBean = new UserBean();
-                    try {
-                        System.out.println("update+++" + dateFormat.format(new Date()));
-//                        boolean flag = userService.userLogin("123456", "123546");
-                    } catch (Exception e) {
-                        System.out.println("错误信息为：" + e.getMessage());
-                    }
+                    DEFAULT_CRON = cron;
+                    System.out.println("---time1+++" + dateFormat.format(new Date()));
                 } else {
-                    System.out.println("default+++" + dateFormat.format(new Date()));
+                    System.out.println("---time2+++" + dateFormat.format(new Date()));
                 }
+
+
             }
         }, new Trigger() {
             @Override

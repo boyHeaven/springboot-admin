@@ -2,26 +2,26 @@ package cn.com.yxb.springboot.quartz1;
 
 import org.quartz.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 具体的添加任务.
- * <p>
- * Created on 2017/6/7.
+ * Created on 2017/6/12.
  *
  * @author bin
  */
 @Service
-public class AddJob {
+@Transactional
+public class AddJobServiceImpl implements AddJobService {
 
     public void execute(String jobId, String jobGroup, String jobName,
                         String cronExpression, String jobDesc) throws Exception {
 
-        QuartzConfig QuartzConfig = new QuartzConfig();
+        QuartzConfig quartzConfig = new QuartzConfig();
+        Scheduler scheduler = quartzConfig.scheduler();
 
-        Scheduler scheduler = QuartzConfig.scheduler();
         List<ScheduleJob> jobList = new ArrayList<ScheduleJob>() {
             private static final long serialVersionUID = 2596601829579886713L;
 
@@ -34,10 +34,9 @@ public class AddJob {
                 job.setCronExpression(cronExpression);
                 job.setDesc(jobDesc);
                 this.add(job);
-
-
             }
         };
+
         for (ScheduleJob job : jobList) {
             TriggerKey triggerKey = TriggerKey.triggerKey(job.getJobName(), job.getJobGroup());
             //获取trigger，即在spring配置文件中定义的 bean id="myTrigger"

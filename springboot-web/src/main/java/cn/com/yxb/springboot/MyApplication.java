@@ -25,6 +25,8 @@ public class MyApplication {
 
     public static void main(String[] args) {
 
+        System.out.println("this is test");
+
         SpringApplication sbl = new SpringApplication(MyApplication.class);
         sbl.run(args);
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");

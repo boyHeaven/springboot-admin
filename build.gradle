@@ -1,18 +1,12 @@
 buildscript {
-
     repositories {
-
         maven { url 'http://repo1.maven.org/maven2/' }
-
         mavenCentral()
         jcenter()
     }
-
     dependencies {
         classpath(group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.5.3.RELEASE')
     }
-
-
 }
 
 allprojects {
@@ -69,7 +63,7 @@ configure(rootProject) {
 
     task wrapper(type: Wrapper) {
         gradleVersion = '3.3'
-        distributionUrl = "https//services.gradle.org/distributions/gradle-${gradleVersion}-bin.zip"
+        distributionUrl = "https//services.gradle.org/distributions/gradle-3.5-bin.zip"
     }
 
 
